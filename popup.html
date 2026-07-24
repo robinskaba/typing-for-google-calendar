@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500&display=swap');
+    
+    :root {
+      /* Light Theme (GM3) */
+      --bg: #f8f9fa;
+      --surface: #ffffff;
+      --text: #202124;
+      --text-secondary: #5f6368;
+      --primary: #0b57d0;
+      --primary-hover: #0842a0;
+      --border: #dadce0;
+    }
+
+    body.theme-dark {
+      --bg: #202124;
+      --surface: #303134;
+      --text: #e8eaed;
+      --text-secondary: #9aa0a6;
+      --primary: #8ab4f8;
+      --primary-hover: #aecbfa;
+      --border: #5f6368;
+    }
+
+    body { 
+      font-family: 'Google Sans', sans-serif; 
+      padding: 16px; 
+      width: 280px; 
+      background-color: var(--bg);
+      color: var(--text);
+      margin: 0;
+      transition: background-color 0.2s, color 0.2s;
+    }
+    h2 { margin-top: 0; margin-bottom: 8px; font-weight: 500; font-size: 20px; }
+    p { font-size: 13px; color: var(--text-secondary); line-height: 1.4; }
+    
+    .section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 12px;
+      text-align: left;
+    }
+    .section-title {
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+    .setting-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .setting-row:last-child { margin-bottom: 0; }
+    label { font-size: 13px; }
+    
+    select, input[type="number"] {
+      background: var(--bg);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 4px 8px;
+      font-family: 'Google Sans', sans-serif;
+      font-size: 12px;
+      outline: none;
+    }
+    
+    button { 
+      background: var(--primary); 
+      color: var(--surface); 
+      border: none; 
+      padding: 8px 16px; 
+      border-radius: 18px; 
+      cursor: pointer; 
+      font-size: 14px; 
+      font-weight: 500;
+      font-family: 'Google Sans', sans-serif;
+      transition: background 0.2s;
+      width: 100%;
+    }
+    button:hover { background: var(--primary-hover); }
+    button:disabled { background: var(--border); color: var(--text-secondary); cursor: not-allowed; }
+    
+    /* Toggle switch */
+    .switch { position: relative; display: inline-block; width: 34px; height: 20px; }
+    .switch input { opacity: 0; width: 0; height: 0; }
+    .slider {
+      position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
+      background-color: var(--border); transition: .4s; border-radius: 20px;
+    }
+    .slider:before {
+      position: absolute; content: ""; height: 16px; width: 16px; left: 2px; bottom: 2px;
+      background-color: var(--surface); transition: .4s; border-radius: 50%;
+    }
+    input:checked + .slider { background-color: var(--primary); }
+    input:checked + .slider:before { transform: translateX(14px); }
+    
+    .btn-secondary {
+      background: transparent; color: var(--primary); border: 1px solid var(--primary); margin-top: 8px;
+    }
+    .btn-secondary:hover { background: rgba(11, 87, 208, 0.1); }
+    body.theme-dark .btn-secondary:hover { background: rgba(138, 180, 248, 0.1); }
+  </style>
+</head>
+<body class="theme-light">
+  <h2 style="font-size: 16px;">Typing for Google Calendar</h2>
+  <p id="status">Manage your extension settings below.</p>
+  
+  <div class="section" id="authSection">
+    <button id="authBtn">Connect Google Calendar</button>
+    <button id="signOutBtn" class="btn-secondary" style="display:none;">Sign Out / Switch Account</button>
+  </div>
+
+  <div class="section" id="settingsSection">
+    <div class="section-title">Preferences</div>
+    
+    <div class="setting-row">
+      <label>Theme</label>
+      <select id="themeSelect">
+        <option value="system">System</option>
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+      </select>
+    </div>
+    
+    <div class="setting-row">
+      <label title="Automatically focus the text field when Google Calendar loads">Autofocus Input Field</label>
+      <label class="switch">
+        <input type="checkbox" id="autofocusToggle" checked>
+        <span class="slider"></span>
+      </label>
+    </div>
+    
+    <div class="setting-row">
+      <label title="Maximum number of days in the past that can be affected by moving/deleting">Max Past Days</label>
+      <input type="number" id="pastDaysInput" value="7" min="0" max="365" style="width: 50px;">
+    </div>
+    
+    <button class="btn-secondary" id="tutorialBtn">View Tutorial</button>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

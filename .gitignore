@@ -1,0 +1,25 @@
+# Node dependencies
+node_modules/
+npm-debug.log
+
+# Build files and archives
+*.zip
+*.crx
+
+# Media (Videos/large assets used for store listing but shouldn't bloat the repo)
+*.mp4
+*.mov
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Workspace artifacts
+workfiles/
+
+workfiles/

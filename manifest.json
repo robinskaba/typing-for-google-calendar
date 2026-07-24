@@ -1,0 +1,43 @@
+{
+  "manifest_version": 3,
+  "name": "Typing for Google Calendar",
+  "version": "1.0",
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Typing for Google Calendar",
+    "default_icon": {
+      "16": "assets/img/icon_dark.png",
+      "48": "assets/img/icon_dark.png",
+      "128": "assets/img/icon_dark.png"
+    }
+  },
+  "icons": {
+    "16": "assets/img/icon_dark.png",
+    "48": "assets/img/icon_dark.png",
+    "128": "assets/img/icon_dark.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://calendar.google.com/*"
+      ],
+      "js": [
+        "content.js"
+      ]
+    }
+  ],
+  "permissions": [
+    "identity",
+    "storage"
+  ],
+  "oauth2": {
+    "client_id": "418184414363-pqr09o0rulflckf5n5jun8mgr25rc5o7.apps.googleusercontent.com",
+    "scopes": [
+      "https://www.googleapis.com/auth/calendar"
+    ]
+  },
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0aFDyYnSV3cN25Sd99F6bj6TJoWnlkahsZDblhPIPG6U5zuBZLteG+RvQ5pWLysbQNZMSj79ZgWLP+FpFMkg6tYXGRt+Z7Jx5QkyY8gxEOXQHtJViE3DZoTwfSVW+tB7DovejME/bqN4xKr5grynKIFFo+5DKMnTMCdJu2vZcINn0NS9uRicmjzkFRMW5BaBFDPF0T9niDHqay6e1i6r90Zs9SG47eFHyGwsUtIp6xAAHgQLPtnzy9+WC9IEkNvp/s4LeyIdD6HHHHTO0Hwp0XEvEnrb8CjZ2BfZSQ8Y1E5QbAH/SztQS2Bm/ZMazI7BTX67Afvqpjr00AnzMF7MQQIDAQAB"
+}
