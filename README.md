@@ -6,7 +6,7 @@ _control your calendar completely with your keyboard using Todoist-like syntax_
   <source src="docs/readme/input-demo.webm" type="video/webm">
 </video>
 
-[**Install from Chrome Web Store**](#) _(Link coming soon)_
+[**Install from Chrome Web Store**](https://chromewebstore.google.com/detail/typing-for-google-calenda/mcdelnbaifndbahbofmongfpkciflbcj)
 
 ### Commands
 
